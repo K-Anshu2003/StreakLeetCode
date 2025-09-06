@@ -1,3 +1,5 @@
+//Minimum operation to make array elements zero
+
 class Solution {
     static long expSum4[]=new long[18];
     static long expSum(int x){
