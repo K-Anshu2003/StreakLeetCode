@@ -1,3 +1,5 @@
+//Find the number of Ways to place people II
+
 class Solution {
     public int numberOfPairs(int[][] points) {
         // Step 1: Sort points by x ascending, then by y descending
