@@ -1,3 +1,5 @@
+//Find closest person
+
 class Solution {
     public int findClosest(int x, int y, int z) {
         if((Math.abs(x-z)) < (Math.abs(y-z))){
