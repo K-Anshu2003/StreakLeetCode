@@ -1,1 +1,40 @@
+//Number of people aware of a secret
 
+class Solution {
+    int MOD = 1_000_000_007;
+    //this will return total people going to contribute on day n
+    public int peopleAwareOfSecret(int n, int delay, int forget) {
+        int total = 0;
+        //creating an array for memoization
+        int[] memo = new int[n+1];
+        
+        //initializing the array with -1;;
+        for (int i = 0; i <= n; i++) {
+            memo[i] = -1;
+        }
+
+        for(int day=n-forget+1; day<=n; day++){
+            if(day>0){
+                total = (total + solve(day, delay, forget, memo)) % MOD;
+            }
+        }
+        return total;
+    }
+
+    //this will return the number of people going to contribute the day "day" 
+    public int solve(int day, int delay, int forget, int[] memo){
+        if(day == 1){
+            return 1;
+        }
+        if(memo[day] != -1){
+            return memo[day];
+        }
+        int result = 0;
+        for(int prev=day-forget+1; prev<=day-delay; prev++){
+            if(prev>0){
+                result = (result+solve(prev, delay, forget, memo))%MOD;
+            }
+        }
+        return memo[day] = result;
+    }
+}
