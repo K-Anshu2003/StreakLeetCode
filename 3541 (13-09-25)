@@ -1,3 +1,5 @@
+//Find the most frequent vowel and consonent
+
 class Solution {
     public int maxFreqSum(String s) {
         Map<Character, Integer> vowelFreq = new HashMap<>();
