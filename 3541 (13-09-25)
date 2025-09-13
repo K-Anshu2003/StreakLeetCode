@@ -1,0 +1,23 @@
+class Solution {
+    public int maxFreqSum(String s) {
+        Map<Character, Integer> vowelFreq = new HashMap<>();
+        Map<Character, Integer> consonantFreq = new HashMap<>();
+
+        for (char c : s.toCharArray()) {
+            if (isVowel(c)) {
+                vowelFreq.merge(c, 1, Integer::sum);
+            } else {
+                consonantFreq.merge(c, 1, Integer::sum);
+            }
+        }
+
+        int maxVowel = vowelFreq.isEmpty() ? 0 : Collections.max(vowelFreq.values());
+        int maxConsonant = consonantFreq.isEmpty() ? 0 : Collections.max(consonantFreq.values());
+
+        return maxVowel + maxConsonant;
+    }
+
+    private boolean isVowel(char c) {
+        return "aeiou".indexOf(c) != -1;
+    }
+}
