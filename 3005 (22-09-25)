@@ -1,0 +1,25 @@
+//count elements with max Frequency
+
+class Solution {
+    public int maxFrequencyElements(int[] nums) {
+
+        Map<Integer, Integer> freq = new HashMap<>();
+        
+        // all the num and their respective freq in map
+        for(int i : nums){
+            freq.put(i,freq.getOrDefault(i,0)+1);
+        }
+
+        // finding the map freq
+        int maxfreq = Collections.max(freq.values());
+
+        //adding all the maxFrequencies
+        int total = 0;
+        for(int Val : freq.values()){
+            if(Val == maxfreq){
+                total += Val;
+            }
+        }
+        return total;
+    }
+}
