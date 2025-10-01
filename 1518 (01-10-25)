@@ -1,0 +1,16 @@
+// Water Bottles
+
+class Solution {
+    public int numWaterBottles(int numBottles, int numExchange) {
+
+        int total = numBottles;
+        int fullBottle = numBottles;
+        while(fullBottle >= numExchange){
+            int newBottle = fullBottle/numExchange;
+            total += newBottle;
+            fullBottle = newBottle + (fullBottle%numExchange);
+        }
+        return total;
+        
+    }
+}
