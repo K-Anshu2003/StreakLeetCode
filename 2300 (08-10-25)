@@ -1,0 +1,47 @@
+//Successful pairs of spells and potions
+class Solution {
+    public int[] successfulPairs(int[] spells, int[] potions, long success){
+        Arrays.sort(potions);
+        int n = spells.length;
+        int m = potions.length;
+        int[] res = new int[n];
+
+        for(int i=0; i<n; i++){
+            long sp = spells[i];
+            int left = 0;
+            int right = m-1;
+            int idx = -1;
+
+            while(left <= right){
+                int mid = left+(right-left)/2;
+                if(sp*potions[mid] >= success){
+                    idx = mid;
+                    right = mid-1;
+                }else{
+                    left = mid+1;
+                }
+            }
+            res[i] = (idx == -1) ? 0: (m-idx);
+        }
+        return res; 
+
+    }
+
+    public int[] successfulPairs1(int[] spells, int[] potions, long success) {
+        int n = spells.length;
+        int m = potions.length;
+
+        int[] res = new int[n];
+
+        for(int i=0; i<n; i++){
+            int count = 0;
+            for(int j=0; j<m; j++){
+                if(spells[i]*potions[j] >= success){
+                    count++;
+                }
+            }
+            res[i] = count;
+        }
+        return res; 
+    }
+}
