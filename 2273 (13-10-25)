@@ -1,0 +1,21 @@
+// find resultant array after removing anagrams
+class Solution {
+    public List<String> removeAnagrams(String[] words) {
+
+        int n = words.length;
+        List<String> li = new ArrayList<>();
+        String prevSorted = "";
+
+        for(String str : words){
+            char[] ch = str.toCharArray();
+            Arrays.sort(ch);
+            String currSorted = new String(ch);
+
+            if(!currSorted.equals(prevSorted)){
+                li.add(str);
+                prevSorted = currSorted;
+            }
+        }
+        return li;   
+    }
+}
